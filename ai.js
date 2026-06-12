@@ -1,9 +1,9 @@
 'use strict';
-const { addCmd, addTrigger } = require('../../guru/handlers/loader');
-const config  = require('../../guru/config/settings');
-const { getSetting } = require('../../guru/db/database');
-const { channelCtx } = require('../../guru/utils/gmdFunctions2');
-const { guruApi }    = require('../../guru/utils/guruApi');
+const { addCmd, addTrigger } = require('../../putiny/handlers/loader');
+const config  = require('../../putiny/config/settings');
+const { getSetting } = require('../../putiny/db/database');
+const { channelCtx } = require('../../putiny/utils/gmdFunctions2');
+const { putinyApi }    = require('../../putiny/utils/putinyApi');
 
 const memory = new Map();
 function getHistory(jid)  { if (!memory.has(jid)) memory.set(jid, []); return memory.get(jid); }
@@ -29,8 +29,8 @@ async function askAI(userMessage, senderJid, model = 'chat') {
 // ── .ai command ────────────────────────────────────────────────
 addCmd({
     name: 'ai',
-    aliases: ['ask', 'gpt', 'chat'],
-    desc: 'Chat with the AI assistant (GuruTech)',
+    aliases: ['llama', 'gpt', 'gemini'],
+    desc: 'Chat with the AI assistant (PutinyTech)',
     usage: 'ai <your question>',
     category: 'ai',
     handler: async (ctx) => {
@@ -47,9 +47,9 @@ addCmd({
 // ── GPT-5 ──────────────────────────────────────────────────────
 addCmd({
     name: 'gpt5',
-    aliases: ['gpt'],
-    desc: 'Chat with GPT-5 via GuruTech',
-    usage: 'gpt5 <question>',
+    aliases: ['chatgpt'],
+    desc: 'Chat with CHAT-GPT via PutinyTech',
+    usage: 'cgpt <question>',
     category: 'ai',
     handler: async (ctx) => {
         if (!ctx.text) return ctx.reply(`❌ Example: \`${config.BOT_PREFIX}gpt5 Explain black holes\``);
@@ -64,7 +64,7 @@ addCmd({
 addCmd({
     name: 'gemini',
     aliases: ['gem'],
-    desc: 'Chat with Gemini 2.5 Pro via GuruTech',
+    desc: 'Chat with Gemini 2.5 Pro via PutinyTech',
     usage: 'gemini <question>',
     category: 'ai',
     handler: async (ctx) => {
@@ -80,7 +80,7 @@ addCmd({
 addCmd({
     name: 'deepseek',
     aliases: ['ds'],
-    desc: 'Chat with DeepSeek V3 via GuruTech',
+    desc: 'Chat with DeepSeek V3 via PutinyTech',
     usage: 'deepseek <question>',
     category: 'ai',
     handler: async (ctx) => {
@@ -119,7 +119,7 @@ addCmd({
 addCmd({
     name: 'translate',
     aliases: ['tr', 'trans'],
-    desc: 'Translate text to any language via GuruTech',
+    desc: 'Translate text to any language via PutinyTech',
     usage: 'translate <language> | <text>',
     category: 'ai',
     handler: async (ctx) => {
