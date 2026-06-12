@@ -1,9 +1,9 @@
 'use strict';
-const { addTrigger }            = require('../../guru/handlers/loader');
-const { getGroupSettings }      = require('../../guru/db/database');
-const { cleanJid }              = require('../../guru/utils/helpers');
-const config                    = require('../../guru/config/settings');
-const { channelCtx } = require('../../guru/utils/gmdFunctions2');
+const { addTrigger }            = require('../../putiny/handlers/loader');
+const { getGroupSettings }      = require('../../putiny/db/database');
+const { cleanJid }              = require('../../putiny/utils/helpers');
+const config                    = require('../../putiny/config/settings');
+const { channelCtx } = require('../../putiny/utils/gmdFunctions2');
 
 const LINK_REGEX = /https?:\/\/|chat\.whatsapp\.com\/|wa\.me\//i;
 
